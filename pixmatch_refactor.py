@@ -56,13 +56,15 @@ if "emoji_bank" not in mystate: mystate.emoji_bank = []
 if "GameDetails" not in mystate: mystate.GameDetails = ['Medium', 6, 7, '']  # difficulty level, sec interval for autogen, total_cells_per_row_or_col, player name
 
 # common functions
+#Funcion para en la parte superior de la pagina
 def ReduceGapFromPageTop(wch_section = 'main page'):
     if wch_section == 'main page': st.markdown(" <style> div[class^='block-container'] { padding-top: 2rem; } </style> ", True) # main area
     elif wch_section == 'sidebar': st.markdown(" <style> div[class^='st-emotion-cache-10oheav'] { padding-top: 0rem; } </style> ", True) # sidebar
     elif wch_section == 'all': 
         st.markdown(" <style> div[class^='block-container'] { padding-top: 2rem; } </style> ", True) # main area
         st.markdown(" <style> div[class^='st-emotion-cache-10oheav'] { padding-top: 0rem; } </style> ", True) # sidebar
-    
+
+#Funcion para realizar el manejo de la tabla de clasificacion
 def Leaderboard(what_to_do):
     if what_to_do == 'create':
         if mystate.GameDetails[3] != '':
@@ -102,6 +104,7 @@ def Leaderboard(what_to_do):
                         elif rknt == 2: sc2.write(f"🥈 | {leaderboard[vkey]['NameCountry']}: :red[{leaderboard[vkey]['HighestScore']}]")
                         elif rknt == 3: sc3.write(f"🥈 | {leaderboard[vkey]['NameCountry']}: :red[{leaderboard[vkey]['HighestScore']}]")
 
+#Funcion para realizar la configuracion de la pagina principal
 def InitialPage():
     with st.sidebar:
         st.subheader("🖼️ Pix Match:")
@@ -137,6 +140,7 @@ def InitialPage():
     author_dtl = "<strong>Happy Playing: 😎 Shawn Pereira: shawnpereira1969@gmail.com</strong>"
     st.markdown(author_dtl, unsafe_allow_html=True)
 
+#Funcion para leer un archivo de imagen y devolverlo en un formato diferente (base64)
 def ReadPictureFile(wch_fl):
     try:
         pxfl = f"{vpth}{wch_fl}"
@@ -144,6 +148,7 @@ def ReadPictureFile(wch_fl):
 
     except: return ""
 
+#Funcion donde se verifica el uso de los botones, mirar cuando han sido presionados
 def PressedCheck(vcell):
     if mystate.plyrbtns[vcell]['isPressed'] == False:
         mystate.plyrbtns[vcell]['isPressed'] = True
@@ -161,6 +166,7 @@ def PressedCheck(vcell):
             mystate.plyrbtns[vcell]['isTrueFalse'] = False
             mystate.myscore -= 1
 
+#Funcion para reiniciar el tablero del juego
 def ResetBoard():
     total_cells_per_row_or_col = mystate.GameDetails[2]
 
@@ -183,6 +189,7 @@ def ResetBoard():
             lptr = flst[lptr]
             mystate.plyrbtns[lptr]['eMoji'] = mystate.sidebar_emoji
 
+#Funcion para realizar la preparacion de un nuevo juego
 def PreNewGame():
     total_cells_per_row_or_col = mystate.GameDetails[2]
     mystate.expired_cells = []
@@ -218,6 +225,7 @@ def PreNewGame():
     mystate.plyrbtns = {}
     for vcell in range(1, ((total_cells_per_row_or_col ** 2)+1)): mystate.plyrbtns[vcell] = {'isPressed': False, 'isTrueFalse': False, 'eMoji': ''}
 
+#Funcion para representar los puntajes con un emoji
 def ScoreEmoji():
     if mystate.myscore == 0: return '😐'
     elif -5 <= mystate.myscore <= -1: return '😏'
@@ -227,6 +235,7 @@ def ScoreEmoji():
     elif 6 <= mystate.myscore <= 10: return '😊'
     elif mystate.myscore > 10: return '😁'
 
+#Funcion para iniciar la logica de un juego nuevo
 def NewGame():
     ResetBoard()
     total_cells_per_row_or_col = mystate.GameDetails[2]
@@ -326,6 +335,7 @@ def NewGame():
         mystate.runpage = Main
         st.rerun()
 
+#Funcion principal (main) donde se define la pagina principal del juego
 def Main():
     st.markdown('<style>[data-testid="stSidebar"] > div:first-child {width: 310px;}</style>', unsafe_allow_html=True,)  # reduce sidebar width
     st.markdown(purple_btn_colour, unsafe_allow_html=True)
