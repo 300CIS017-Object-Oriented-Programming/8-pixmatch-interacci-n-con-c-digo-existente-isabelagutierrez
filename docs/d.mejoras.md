@@ -42,6 +42,20 @@ Los atributos son las características o propiedades de las clases, y los modifi
 #  Entregable - Mejoras para pasar a POO
 Detalla en este markdown lo siguiente: 
 - **Clases a Definir:** Enumera las clases que se podrían definir, describe sus propósito y justifica porque crees que es una clase útil para mejorar el programa.
+  1. Clase Jugador: permite almacenar toda la información del jugador, más alla de solo el nombre y el puntaje y es mas sencillo acceder a esta información.
+  2. Clase Tablero: permite crear un objeto para cada tablero que quiera tener, se pueden organizar mejor las cosas y es visualmente mas sencillo de comprender que poner todos los emojis disponibles
+  3. Clase View: permite organizar toda la interfaz grafica del programa, sin necesidad de mezclar procedimientos con funciones que imprimen o muestran información
+
 - **Métodos Importantes:** Enumera los métodos principales para cada clase. Incluye una descripción de cuál sería la utilidad de cada método
-- **Imagen del UML del diagrama de clases**  Adjunta una imagen del UML del diagrama de clases como una forma visual de planificar y entender la estructura de las clases, métodos, atributos y relaciones que podría tener una versión mejorada del código fuente.
-- **Organización de archivos:** Propon una estructura de organización de los archivos de este proyecto para que no queden todos en la raiz principal. Investiga cuáles podrían ser buenas formas de organizar los directorios y a partir de tu investigación indica qué directorios crearías y cómo los organizarías. 
+  1. Registar jugador (Jugador): recibir toda la información del jugador y realizar el registro
+  2. Modo de juego (Tablero): seleccionar la dificultad para poder asignar un tablero
+  3. Organizar puntuación (Jugador): cada que finalice un juego, verificar si estan organizados de mayor a menor
+  4. Asignar tableros (Tablero): mostrar tablero dependiendo la dificultad 
+  5. Mostrar puntuacion (View): Imprimir la información de las puntuaciones
+
+  - **Imagen del UML del diagrama de clases**  Adjunta una imagen del UML del diagrama de clases como una forma visual de planificar y entender la estructura de las clases, métodos, atributos y relaciones que podría tener una versión mejorada del código fuente.
+  ![img.png](img/uml_mejoras.png)
+
+- **Organización de archivos:** Propon una estructura de organización de los archivos de este proyecto para que no queden todos en la raiz principal. Investiga cuáles podrían ser buenas formas de organizar los directorios y a partir de tu investigación indica qué directorios crearías y cómo los organizarías. <br>
+Podria haber una carpeta donde se almacene todo el código principal, tanto el original como la copia, en el caso en que se divida en clase, podria haber otra carpeta en donde esten todas las clases importantes, sin contar el main, ya que podría ir en la carpeta principal al igual que una clase view con toda la parte grafica,
+las imagenes deberían de almacenarse en la carpeta img ya existente para evitar archivos que no son de uso frecuente y los archivos propios de git como el gitignore ir en otra carpeta aparte donde se almacene toda esa información.
